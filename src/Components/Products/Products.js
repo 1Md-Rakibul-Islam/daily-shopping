@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { add } from '../../Store/cartSlice';
 
 const Products = () => {
 
+    const dispatch = useDispatch();
     const [products, setProducts] = useState([]);
 
     useEffect( () => {
@@ -11,7 +14,11 @@ const Products = () => {
             setProducts(data);
         }
         fetchProducts();
-    }, [])
+    }, []);
+
+    const handleAdd = (product) => {
+        dispatch(add(product.cart));
+    }
 
     return (
         <div className='mx-10 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
@@ -28,7 +35,7 @@ const Products = () => {
                             </h2>
                             <p>{product?.description}</p>
                             <div className="card-actions">
-                            <button className="btn btn-primary btn-sm">Buy Now</button>
+                            <button onClick={ () => handleAdd(product)} className="btn btn-primary btn-sm">Buy Now</button>
                             </div>
                         </div>
                     </div>
