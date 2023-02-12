@@ -1,17 +1,17 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import NavBar from "./Components/NavBar/NavBar"
 import Footer from "./Components/Footer/Footer"
-import { CartPage, CategoryPage, Home } from './Pages';
+import Home from './Pages/Home/Home';
+import Cart from './Pages/Cart/Cart';
 
 function App() {
   return (
-    <div className="">
+    <div className="min-h-screen">
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path='/' element = {<Home></Home>} />
-          <Route path='/category/:id' element = {<CategoryPage></CategoryPage>} />
-          <Route path='/cart' element = {<CartPage></CartPage>} />
+          <Route path='/' element = {<Home />} />
+          <Route path='/cart' element = {<Cart />} />
         </Routes>
         <Footer />
       </BrowserRouter>
