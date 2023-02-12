@@ -17,16 +17,17 @@ const Products = () => {
     }, []);
 
     const handleAdd = (product) => {
-        dispatch(add(product.cart));
+        // console.log(product);
+        dispatch(add(product));
     }
 
     return (
         <div className='mx-10 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
             {
                 products?.map( product => (
-                    <div className="card bg-base-100 hover:shadow-2xl shadow-xl">
+                    <div key={product?.id} className="card bg-base-100 hover:shadow-2xl shadow-xl">
                         <figure className="px-10 pt-10">
-                            <img src={product?.images[1]} alt="" className="rounded" />
+                            <img src={product?.images[0]} alt="" className="rounded" />
                         </figure>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">
